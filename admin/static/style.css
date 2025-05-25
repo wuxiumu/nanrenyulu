@@ -1,0 +1,41 @@
+body { font-family: "Segoe UI", sans-serif; padding: 30px; padding: 20px; margin: auto; }
+.highlight { background: yellow; }
+.line { margin: 10px 0; display: flex; align-items: center; gap: 10px; }
+.line span.text { flex: 1; }
+.btn { padding: 5px 10px; border: none; border-radius: 5px; background: #007BFF; color: white; cursor: pointer; }
+.btn:hover { background: #0056b3; }
+.btn-danger { background: #dc3545; }
+.btn-danger:hover { background: #a71d2a; }
+.btn-copy { background: #28a745; }
+.btn-copy:hover { background: #1e7e34; }
+.pagination a, .pagination strong {
+    padding: 5px 10px;
+    margin: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.pagination strong {
+    background: #007BFF;
+    color: white;
+}
+.stats { margin-top: 10px; font-style: italic; color: gray; }
+file-item { margin: 10px 0; }
+.file-item input { width: 200px; }
+.actions button { margin-left: 5px; }
+.quote {
+    padding: 10px;
+    background: #f9f9f9;
+    border-left: 4px solid #333;
+    margin-bottom: 10px;
+    position: relative;
+}
+.quote-buttons {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+#fileList{
+    width: 800px;
+    max-width: 100%;
+}
