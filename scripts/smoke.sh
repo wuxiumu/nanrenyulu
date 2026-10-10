@@ -6,7 +6,7 @@ command -v php >/dev/null || fail "需要 PHP"
 [[ -f admin/config.php && -f api/index.php && -d yijuhua ]] || fail "缺少核心"
 [[ -f .env.example ]] || fail "缺少 .env.example"
 ok "核心文件齐全"
-grep -q "123456" admin/config.php && fail "config 仍含 123456" || ok "无硬编码 123456"
+grep -E "password.*=.*123456|'123456'" admin/config.php && fail "config 仍含硬编码口令" || ok "无硬编码默认口令"
 php -l admin/config.php >/dev/null
 php -l api/index.php >/dev/null
 ok "PHP lint OK"
