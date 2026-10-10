@@ -1,115 +1,47 @@
 # nanrenyulu · 语录管理后台
 
-> **有力量的语录**管理后台与接口，适合内容站/日签产品。
+> **有力量的语录**管理后台与公开接口，适合内容站 / 日签产品。
 
 **定制：** 微信 **qingbao199101**（备注：语录系统）｜ [wuxiumu@163.com](mailto:wuxiumu@163.com)
 
-闲来无聊，设计一个语录管理后台和接口。有力量的语录
+基于 PHP 的语录管理系统：后台维护 `.txt` 模块，接口对外提供语录。
 
-
-## ✅ 项目目标概览
-
-一个基于 PHP 的语录管理系统，核心功能如下：
-
-### 1️⃣ 文件管理页（首页）
-```
-•	列出 yijuhua/ 目录下所有 .txt 文件（即“模块”）
-•	✅ 支持分页浏览
-•	✅ 支持添加新文件
-•	✅ 支持编辑文件名
-•	✅ 支持删除文件（有弹窗确认）
-•	✅ 每个文件名称是一个链接，点击进入内容编辑模块（下方第2条）
-```
-### 2️⃣ 内容管理页（module.php）
-```
-•	展示选中文件中的内容（每行一条）
-•	✅ 支持分页浏览
-•	✅ 支持关键词搜索（关键词高亮）
-•	✅ 支持编辑、删除单条记录（删除确认）
-•	✅ 支持添加新语句
-•	✅ 所有操作通过 Ajax 局部刷新（无整页刷新）
-```
-### 3️⃣ 登录权限控制
-```
-•	登录校验
-•	✅ 登录后进入系统
-•	✅ 未登录则跳转到登录页
-•	✅ 登录状态通过 session 维持
-•	✅ 登录表单使用 Ajax 提交
-```
-### 4️⃣ config.php 配置文件
-
-集中配置以下内容：
-```
-<?php
-return [
-    'username' => 'admin',
-    'password' => '123456', // 建议后续使用哈希
-    'data_dir' => __DIR__ . '/yijuhua/',
-    'site_title' => '语录管理系统',
-    'site_logo' => 'logo.png', // 相对路径
-];
-```
-
-
-⸻
-
-## 🧩 文件结构
-```
-/项目目录/
-│
-├── index.php           // 文件管理页
-├── module.php          // 内容管理页
-├── login.php           // 登录页
-├── logout.php          // 登出处理
-├── config.php          // 配置项
-├── yijuhua/            // 所有.txt文件数据目录
-├── static/
-│   ├── style.css
-│   └── main.js         // 放 Ajax 与弹窗等逻辑
-└── assets/logo.png     // logo 图片
-```
-
-
-⸻
-
-## 🧠 技术点清单
-```
-功能	技术或方式
-文件/内容分页	PHP 后端分页
-搜索关键词高亮	JS 高亮 + PHP 搜索过滤
-删除确认弹窗	JS confirm() 或 Modal 模板
-Ajax 局部刷新	jQuery 或原生 fetch() + JSON
-登录校验	$_SESSION 维持登录状态
-页面跳转校验	登录检查在 auth.php 或统一 header 文件中实现
-配置文件独立	使用 config.php return []
+## 当前仓库结构（与代码对齐）
 
 ```
-
-⸻
-
-## 模块划分整源码
-
+nanrenyulu/
+├── admin/                 # 管理后台（入口在此，不是仓库根）
+│   ├── index.php          # 文件（模块）管理
+│   ├── module.php         # 单模块内容管理
+│   ├── login.php / logout.php / auth.php
+│   ├── config.php         # 账号与数据目录配置
+│   ├── file_action.php / module_action.php / export.php
+│   └── static/            # style.css + main.js（Ajax）
+├── api/
+│   └── index.php          # 对外语录接口
+└── yijuhua/               # 语料：各模块 .txt（每行一条）
 ```
-	•	🔐 登录系统
-	•	📂 文件列表页（index.php）
-	•	📝 内容编辑页（module.php）
-	•	⚙️ config.php + 公共函数 utils.php
-	•	💡 Ajax + JS 管理
+
+## 功能概览
+
+### 管理端（`admin/`）
+
+- 列出 `yijuhua/` 下所有 `.txt` 模块；增删改文件名
+- 模块内分页浏览、关键词搜索、增删改单条
+- Session 登录（`config.php` 配置账号；建议生产改哈希密码）
+- Ajax 局部刷新
+
+### 接口（`api/`）
+
+- 对外读取语录（按模块 / 随机等，以 `api/index.php` 为准）
+
+## 快速开始
+
+```bash
+# 将 admin/ 与 api/ 配到 PHP Web 根（或分别虚拟主机）
+# 编辑 admin/config.php 修改账号与 data_dir
+# 浏览器打开 admin/login.php
 ```
-
-## 预览
-
-### 登陆页：
-<img src="https://archive.biliimg.com/bfs/archive/216a5958b2bccb5b9acac75dda685cba32f10622.png" alt="登陆" referrerpolicy="no-referrer">
-
-### 语录文件列表页：
-
-![](https://archive.biliimg.com/bfs/archive/e40f0dad0e25906d3bf490c2eb2b43c85f2a4a28.png)
-### 语录内容列表页
-![](https://archive.biliimg.com/bfs/archive/38205f11a9b7b3858d5715d019179e197f4bc04c.png)
-### 编辑语录页 
-![](https://archive.biliimg.com/bfs/archive/ae672d6f13eab0d65766dfb87b5df7290759d070.png)
 
 ## SEO 字段预留（产品页 HTML 统一生成时用）
 
@@ -132,30 +64,30 @@ Ajax 局部刷新	jQuery 或原生 fetch() + JSON
 
 ### 关键词（中英）
 
-- 中文：语录管理系统, 日签语录, 语录API, 内容后台
-- English: quotes CMS, daily quotes API, quote admin
+- 中文：语录管理, 日签, 语录 API, PHP 后台
+- English: quote CMS, daily quote API, PHP admin
 
 ### 事实摘要
 
-- 产品：语录管理后台与 API。
-- 适合：日签 App、内容站、社群运营。
-- 交付：分类、审核、接口与皮肤。
-- 不做：不自带全网语录版权。
+- 产品：PHP 语录管理后台 + 文件存储 + 简易 API。
+- 适合：内容站、日签、需要可编辑语料库的产品。
+- 交付：模块扩展、鉴权加固、接口字段定制、皮肤。
+- 不做：不是全功能 CMS；默认账号请务必改掉。
 
 ### FAQ
 
-**Q：这是什么？**  
-A：见事实摘要「产品」。
+**Q：入口在哪？**  
+A：管理端在 `admin/`，不是仓库根目录的 `index.php`。
 
 **Q：如何定制？**  
-A：微信 `qingbao199101`，备注项目名。
+A：微信 `qingbao199101`，备注「语录系统」。
 
 **Q：是否含密钥？**  
-A：默认不含，自行配置。
+A：`admin/config.php` 含默认账号示例，上线前必须修改。
 
 ## 定制合作
 
-分类体系、接口、前端日签页。加微信备注「语录系统」。
+模块扩展、API、鉴权与部署。加微信备注「语录系统」。
 
 ---
 
@@ -173,4 +105,3 @@ A：默认不含，自行配置。
 | 微信赞赏码 | 支付宝收款码 |
 |---|---|
 | ![微信赞赏码](https://chiguashentan-test.oss-cn-beijing.aliyuncs.com/wxprogram/zan/20261002185236_31_227.png) | ![支付宝收款码](https://chiguashentan-test.oss-cn-beijing.aliyuncs.com/wxprogram/zan/20261002185309_32_227.jpg) |
-
