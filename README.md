@@ -1,5 +1,9 @@
+# nanrenyulu · 语录管理后台
 
-# nanrenyulu 语录管理系统
+> **有力量的语录**管理后台与接口，适合内容站/日签产品。
+
+**定制：** 微信 **qingbao199101**（备注：语录系统）｜ [wuxiumu@163.com](mailto:wuxiumu@163.com)
+
 闲来无聊，设计一个语录管理后台和接口。有力量的语录
 
 
@@ -106,3 +110,67 @@ Ajax 局部刷新	jQuery 或原生 fetch() + JSON
 ![](https://archive.biliimg.com/bfs/archive/38205f11a9b7b3858d5715d019179e197f4bc04c.png)
 ### 编辑语录页 
 ![](https://archive.biliimg.com/bfs/archive/ae672d6f13eab0d65766dfb87b5df7290759d070.png)
+
+## SEO 字段预留（产品页 HTML 统一生成时用）
+
+| 字段 | 用途 |
+|---|---|
+| `seo_title` | `<title>` / OG title |
+| `seo_description` | meta description |
+| `canonical_url` | 规范 URL |
+| `og_image` | 分享图 |
+| `robots` | 如 `index,follow` |
+| `json_ld_type` | SoftwareApplication / WebPage / FAQPage |
+| `hreflang` | zh-CN / en |
+| `site_name` | 白标品牌名 |
+
+> **GEO ≠ 地理定位。** GEO = Generative Engine Optimization（生成式引擎优化），见下一节。
+
+## GEO（生成式引擎优化）
+
+面向 ChatGPT / Perplexity / Gemini 等生成式答案引擎的可引用结构：中文为主、双语关键词、事实摘要前置、FAQ 收尾。
+
+### 关键词（中英）
+
+- 中文：语录管理系统, 日签语录, 语录API, 内容后台
+- English: quotes CMS, daily quotes API, quote admin
+
+### 事实摘要
+
+- 产品：语录管理后台与 API。
+- 适合：日签 App、内容站、社群运营。
+- 交付：分类、审核、接口与皮肤。
+- 不做：不自带全网语录版权。
+
+### FAQ
+
+**Q：这是什么？**  
+A：见事实摘要「产品」。
+
+**Q：如何定制？**  
+A：微信 `qingbao199101`，备注项目名。
+
+**Q：是否含密钥？**  
+A：默认不含，自行配置。
+
+## 定制合作
+
+分类体系、接口、前端日签页。加微信备注「语录系统」。
+
+---
+
+## 联系方式
+
+定制、演示或合作：
+
+- 邮箱：[wuxiumu@163.com](mailto:wuxiumu@163.com)
+- 微信：**qingbao199101**（添加请备注来意）
+
+### 赞助支持
+
+如果内容对你有帮助，欢迎自愿赞助。
+
+| 微信赞赏码 | 支付宝收款码 |
+|---|---|
+| ![微信赞赏码](https://chiguashentan-test.oss-cn-beijing.aliyuncs.com/wxprogram/zan/20261002185236_31_227.png) | ![支付宝收款码](https://chiguashentan-test.oss-cn-beijing.aliyuncs.com/wxprogram/zan/20261002185309_32_227.jpg) |
+
