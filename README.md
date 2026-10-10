@@ -22,6 +22,17 @@ nanrenyulu/
 └── yijuhua/               # 语料：各模块 .txt（每行一条）
 ```
 
+
+## 环境变量
+
+复制 `.env.example` → `.env`，设置 `ADMIN_PASSWORD`（仓库内已去掉默认 `123456`）。
+
+## 冒烟自检
+
+```bash
+bash scripts/smoke.sh
+```
+
 ## 功能概览
 
 ### 管理端（`admin/`）
